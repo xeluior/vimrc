@@ -131,6 +131,10 @@ let mapleader = ' '
 " correct Y behavior
 nnoremap Y y$
 
+" realine home/end behaviour
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
+
 " auto install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
