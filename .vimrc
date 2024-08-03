@@ -153,6 +153,9 @@ Plug 'preservim/nerdtree'
 " git diff in sign column
 Plug 'airblade/vim-gitgutter'
 
+" briefly highlight yanked region
+Plug 'machakann/vim-highlightedyank'
+
 call plug#end()
 
 " set prefered colorscheme
@@ -174,3 +177,7 @@ autocmd BufEnter *
 
 " configure update time for gitgutter
 set updatetime=100
+
+" configure highlighted yank
+let g:highlightedyank_highlight_duration = 100
+let g:highlightedyank_highlight_in_visual = 0
