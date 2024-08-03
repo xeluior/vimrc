@@ -167,6 +167,9 @@ Plug 'junegunn/fzf.vim'
 " linting
 Plug 'dense-analysis/ale'
 
+" clear search hl when no longer needed
+Plug 'romainl/vim-cool'
+
 call plug#end()
 
 " set prefered colorscheme
