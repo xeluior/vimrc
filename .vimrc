@@ -130,3 +130,47 @@ let mapleader = ' '
 
 " correct Y behavior
 nnoremap Y y$
+
+" auto install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" install plugins
+call plug#begin()
+
+" auto match brackets
+Plug 'LunarWatcher/auto-pairs'
+
+" nice colorscheme
+Plug 'joshdick/onedark.vim'
+
+" tree-style file explorer
+Plug 'preservim/nerdtree'
+
+" git diff in sign column
+Plug 'airblade/vim-gitgutter'
+
+call plug#end()
+
+" set prefered colorscheme
+colorscheme onedark
+
+" configure NERDTree
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeWinSize = 28
+let g:NERDTreeMinimalUI = 1
+nnoremap <Leader>e :NERDTreeToggle<CR>
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter *
+    \ if winnr('$') == 1
+    \    && exists('b:NERDTree')
+    \    && b:NERDTree.isTabTree()
+    \ | quit
+    \ | endif
+
+" configure update time for gitgutter
+set updatetime=100
