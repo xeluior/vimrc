@@ -156,6 +156,10 @@ Plug 'airblade/vim-gitgutter'
 " briefly highlight yanked region
 Plug 'machakann/vim-highlightedyank'
 
+" fuzzy finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 " set prefered colorscheme
@@ -181,3 +185,11 @@ set updatetime=100
 " configure highlighted yank
 let g:highlightedyank_highlight_duration = 100
 let g:highlightedyank_highlight_in_visual = 0
+
+" add fzf keybinds
+nnoremap <Leader>fb :Buffers<CR>
+nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>fg :Rg<CR>
+nnoremap <Leader>fh :Helptags<CR>
+nnoremap <Leader>fj :Jumps<CR>
+nnoremap <Leader>fm :Marks<CR>
