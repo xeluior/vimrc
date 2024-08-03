@@ -164,6 +164,9 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" linting
+Plug 'dense-analysis/ale'
+
 call plug#end()
 
 " set prefered colorscheme
@@ -197,3 +200,14 @@ nnoremap <Leader>fg :Rg<CR>
 nnoremap <Leader>fh :Helptags<CR>
 nnoremap <Leader>fj :Jumps<CR>
 nnoremap <Leader>fm :Marks<CR>
+
+" add ALE keybinds
+nnoremap K <Plug>(ale_hover)
+nnoremap <Leader>gd <Plug>(ale_go_to_definition)
+nnoremap <Leader>sd <Plug>(ale_go_to_definition_in_vsplit)
+nnoremap <Leader>gr <Plug>(ale_find_references)
+nnoremap <Leader>af <Plug>(ale_fix)
+nnoremap <Leader>R :ALERename<CR>
+nnoremap <Leader>gn <Plug>(ale_next_wrap)
+nnoremap <Leader>gp <Plug>(ale_previous)
+nnoremap <Leader>. :ALECodeAction<CR>
