@@ -85,6 +85,14 @@ set confirm
 " highlight the line with the cursor
 set cursorline
 
+" indentation guides
+set list listchars=trail:·,tab:⇥\ ,leadmultispace:│\ \ \ 
+augroup indentationGuides
+    autocmd!
+    autocmd OptionSet shiftwidth
+        \ execute 'setlocal listchars=trail:•,tab:⇥\ ,leadmultispace:│'.repeat('\ ', &shiftwidth - 1)
+augroup END
+
 " spaces not tabs
 set expandtab softtabstop=4 shiftwidth=4
 
