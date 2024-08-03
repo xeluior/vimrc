@@ -1,6 +1,6 @@
 " use vim (not vi) defaults
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 
 " allow backspace over everything (^W does not stop at insert start)
@@ -32,11 +32,11 @@ inoremap <C-U> <C-G>u<C-U>
 " enable mouse fully for xterm, but not in command mode for other emulators
 " (to allow copy-paste by typing : then making a selection)
 if has('mouse')
-  if &term =~ 'xterm'
-    set mouse=a
-  else
-    set mouse=nvi
-  endif
+    if &term =~ 'xterm'
+        set mouse=a
+    else
+        set mouse=nvi
+    endif
 endif
 
 " enable filetype detection
@@ -46,23 +46,23 @@ filetype plugin indent on
 " when the position is invalid, in an event hadler, for a commit message, or
 " when using xxd
 augroup vimStartup
-  autocmd!
-  autocmd BufReadPost *
-    \ let line = line("'\"")
-    \ | if line >= 1 && line <= line("$") && &filetype !~# 'commit'
-    \      && index(['xxd', 'gitrebase'], &filetype) == -1
-    \ |   execute "normal! g`\""
-    \ | endif
+    autocmd!
+    autocmd BufReadPost *
+        \ let line = line("'\"")
+        \ | if line >= 1 && line <= line("$") && &filetype !~# 'commit'
+        \      && index(['xxd', 'gitrebase'], &filetype) == -1
+        \ |   execute "normal! g`\""
+        \ | endif
 augroup END
 
 " enable syntax highlighting when the terminal has colors
 if &t_Co > 2 || has('gui_running')
-  syntax on
+    syntax on
 endif
 
 " true color support where applicable
 if expand('$COLORTERM') == 'truecolor'
-  set termguicolors
+    set termguicolors
 endif
 
 " show line numbers
@@ -70,13 +70,13 @@ set number
 
 " use system clipboard
 if expand('$WAYLAND_DISPLAY') =~ 'wayland' && executable('wl-copy')
-  augroup waylandYank
-    autocmd!
-    autocmd TextYankPost * silent! call system('wl-copy', @")
-    autocmd FocusGained * let @"=system('wl-paste --no-newline')
-  augroup END
+    augroup waylandYank
+        autocmd!
+        autocmd TextYankPost * silent! call system('wl-copy', @")
+        autocmd FocusGained * let @"=system('wl-paste --no-newline')
+    augroup END
 elseif expand('$DISPLAY') != '$DISPLAY' && has('unnamedplus')
-  set clipboard^=unnamedplus
+    set clipboard^=unnamedplus
 endif
 
 " confirm on :q with unsaved changes instead of just failing
@@ -93,7 +93,7 @@ set hidden
 
 " maintain the sign column even when no signs for consistent spacing
 if has('signs')
-  set signcolumn=yes
+    set signcolumn=yes
 endif
 
 " settings for working with wrapped text
@@ -106,7 +106,7 @@ set splitbelow splitright
 
 " persist undo history and swap (without cluttering .)
 if !isdirectory(expand('~/.vim/swp'))
-  silent! call system('mkdir -p ~/.vim/swp')
+    silent! call system('mkdir -p ~/.vim/swp')
 endif
 
 set undofile undodir=~/.vim/swp
